@@ -1,5 +1,6 @@
 using Ducksten.Core;
 using Ducksten.Core.ObjectPooling;
+using Ducksten.SideScrollerTT.Events;
 using UnityEngine;
 
 namespace Ducksten.SideScrollerTT.Projectiles {
@@ -10,6 +11,7 @@ namespace Ducksten.SideScrollerTT.Projectiles {
         [SerializeField] private Vector2 _spawnArea;
         [SerializeField] private float _projectilesPerSecond;
 
+        private bool _isActive = true; //Можно использовать встроенный enabled, но про него легче забыть, т.к. в коде не будет явно видно что он Update отключает
         private SimpleTimer _timer;
 
         private void Awake() {
@@ -17,7 +19,18 @@ namespace Ducksten.SideScrollerTT.Projectiles {
             _timer = new SimpleTimer(spawnInterval, SpawnProjectile);
         }
 
+        private void OnEnable() {
+            GameEvents.onGameOver.Subscribe(DisableSpawn);
+        }
+
+        private void OnDisable() {
+            GameEvents.onGameOver.Unsubscribe(DisableSpawn);
+        }
+
         private void Update() {
+            if (!_isActive)
+                return;
+            
             _timer.Tick(Time.deltaTime);
         }
 
@@ -33,6 +46,10 @@ namespace Ducksten.SideScrollerTT.Projectiles {
             randomPos.x += Random.Range(-0.5f * _spawnArea.x, 0.5f * _spawnArea.x);
             randomPos.y += Random.Range(-0.5f * _spawnArea.y, 0.5f * _spawnArea.y);
             return randomPos;
+        }
+
+        private void DisableSpawn() {
+            _isActive = false;
         }
 
         private void OnDrawGizmos() {

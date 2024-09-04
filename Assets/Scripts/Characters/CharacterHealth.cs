@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
 namespace Ducksten.SideScrollerTT.Characters {
-    //In the future you could add health number, more sofisticated heal & damage & other stuff
+    //In the future you could add health number, more sophisticated heal & damage & other stuff
     public class CharacterHealth : MonoBehaviour {
         [SerializeField] private HitDetector _hitDetector;
+
+        private bool _hasHealth = true; //Temp replacement for actual health numbers
+
+        public event Action onCharacterDied;
 
         private void OnEnable() {
             _hitDetector.onHitDetected += HitDetected;
@@ -14,7 +19,11 @@ namespace Ducksten.SideScrollerTT.Characters {
         }
 
         private void HitDetected() {
-            Debug.Log("CHARACTER HURT! OMG");
+            if (!_hasHealth)
+                return;
+
+            onCharacterDied?.Invoke();
+            _hasHealth = false;
         }
     }
 }

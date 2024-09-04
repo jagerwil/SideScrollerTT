@@ -6,12 +6,15 @@ namespace Ducksten.Core {
         private readonly Action _timerAction;
         private float _remainingTime;
 
-        public SimpleTimer(float timeBetweenTicks, Action timerAction) {
+        public SimpleTimer(float timeBetweenTicks, Action timerAction, bool fireEventImmediately = true) {
             _timeBetweenTicks = timeBetweenTicks;
             _timerAction = timerAction;
+            if (!fireEventImmediately)
+                _remainingTime = _timeBetweenTicks;
         }
         
         public void Tick(float deltaTime) {
+            _remainingTime -= deltaTime;
             if (_remainingTime > 0f)
                 return;
             
