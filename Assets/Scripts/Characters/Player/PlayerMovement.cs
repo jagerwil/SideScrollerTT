@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ducksten.SideScrollerTT.Player {
+namespace Ducksten.SideScrollerTT.Characters.Player {
     public class PlayerMovement : MonoBehaviour {
         [SerializeField] private PlayerInput _input;
         [SerializeField] private Rigidbody2D _rigidbody;

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Ducksten.SideScrollerTT.Player {
+namespace Ducksten.SideScrollerTT.Characters.Player {
     public class PlayerInput : MonoBehaviour {
         [SerializeField] private string _horizontalAxis = "Horizontal";
         [SerializeField] private string _verticalAxis = "Vertical";

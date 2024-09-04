@@ -13,9 +13,9 @@ TagManager:
   - UI
   - SceneRestraints
   - Character
-  - CharacterHitTrigger
-  - 
-  - 
+  - CharacterHitDetector
+  - Projectile
+  - PoolObjectDespawner
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 282741207
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2785953147
     locked: 0
