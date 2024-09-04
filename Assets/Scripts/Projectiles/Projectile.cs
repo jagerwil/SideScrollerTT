@@ -19,7 +19,8 @@ namespace Ducksten.SideScrollerTT.Projectiles {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            Debug.Log($"Projectile trigger enter 2D! Object: {other.name}");
+            var damageable = other.GetComponent<IDamageable>();
+            damageable?.TakeDamage();
         }
     }
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7025655661383947084}
+  - component: {fileID: 4754963546579309005}
   - component: {fileID: 8220548384445865769}
   m_Layer: 8
   m_Name: HitDetector
@@ -32,6 +33,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6701079973474568827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4754963546579309005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172842463096780676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edc6e8dd73f72e4c8b8059489def9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8220548384445865769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,6 +185,7 @@ GameObject:
   - component: {fileID: 6701079973474568827}
   - component: {fileID: 1665731008782620279}
   - component: {fileID: 5271830234894645926}
+  - component: {fileID: 4754961706412588553}
   - component: {fileID: 3064484785137427301}
   - component: {fileID: 9111878692317116934}
   m_Layer: 7
@@ -229,6 +243,19 @@ MonoBehaviour:
   _rigidbody: {fileID: 3064484785137427301}
   _horizontalMoveSpeed: 4
   _verticalMoveSpeed: 2
+--- !u!114 &4754961706412588553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144203916880507195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cfe053594ca6a4fa26f69a666ee7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitDetector: {fileID: 4754963546579309005}
 --- !u!50 &3064484785137427301
 Rigidbody2D:
   serializedVersion: 4
