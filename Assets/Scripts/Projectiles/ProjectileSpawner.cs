@@ -1,3 +1,4 @@
+using Ducksten.Core;
 using Ducksten.Core.ObjectPooling;
 using UnityEngine;
 
@@ -9,21 +10,15 @@ namespace Ducksten.SideScrollerTT.Projectiles {
         [SerializeField] private Vector2 _spawnArea;
         [SerializeField] private float _projectilesPerSecond;
 
-        private float _spawnInterval;
-        private float _remainingTime;
+        private SimpleTimer _timer;
 
         private void Awake() {
-            _spawnInterval = 1f / _projectilesPerSecond;
+            var spawnInterval = 1f / _projectilesPerSecond;
+            _timer = new SimpleTimer(spawnInterval, SpawnProjectile);
         }
 
         private void Update() {
-            _remainingTime -= Time.deltaTime;
-            if (_remainingTime > 0f) {
-                return;
-            }
-
-            SpawnProjectile();
-            _remainingTime += _spawnInterval;
+            _timer.Tick(Time.deltaTime);
         }
 
         private void SpawnProjectile() {
